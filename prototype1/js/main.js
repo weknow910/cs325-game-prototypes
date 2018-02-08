@@ -74,7 +74,7 @@ window.onload = function() {
     function hitSprite(sprite1, sprite2) {
         score -= 1;
         scoreText.text = "Score: " + score;
-        if(counter % 4 == 0)
+        if(counter % 2 == 0)
           sound2.play();
         else {
           sound.play();
