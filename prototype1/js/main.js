@@ -16,8 +16,7 @@ window.onload = function() {
         // Load an image and call it 'logo'.
         game.load.image( 'logo', 'assets/Winston.png' );
         game.load.image('banana', 'assets/banana.png');
-        game.load.audio('sfx', 'assets/sound1.ogg');
-        game.load.audio('sfx2', 'assets/sound2.ogg');
+        game.load.audio('sfx1', 'assets/sound2.ogg');
     }
 
     var bouncy;
@@ -27,19 +26,18 @@ window.onload = function() {
     var banana4;
     var scoreText;
     var score = 0;
-    var soundclip1;
-    var soundclip2;
     var counter = 0;
+    var sound;
 
     function create() {
+        sound = game.add.audio('sfx1');
+        sound.play();
         // Create a sprite at the center of the screen using the 'logo' image.
         bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
         banana1 = game.add.sprite(0, 0, 'banana');
         banana2 = game.add.sprite(200, 200, 'banana');
         banana3 = game.add.sprite(0, 750, 'banana');
         banana4 = game.add.sprite(500, 500, 'banana');
-        soundclip1 = game.add.audio('sfx2');
-        soundclip2 = game.add.audio('sfx');
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
         bouncy.anchor.setTo( 0.5, 0.5 );
