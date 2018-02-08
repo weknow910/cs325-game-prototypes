@@ -34,6 +34,7 @@ window.onload = function() {
     function create() {
         sound = game.add.audio('sfx1');
         sound2 = game.add.audio('sfx2');
+        sound.play();
         // Create a sprite at the center of the screen using the 'logo' image.
         bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
         banana1 = game.add.sprite(0, 0, 'banana');
@@ -74,11 +75,12 @@ window.onload = function() {
     function hitSprite(sprite1, sprite2) {
         score -= 1;
         scoreText.text = "Score: " + score;
-        if(counter % 2 == 0)
-          sound2.play();
-        else {
-          sound.play();
-        }
+        sound2.play();
+    }
+    function hitSprite2(sprite1, sprite2) {
+        score -= 1;
+        scoreText.text = "Score: " + score;
+        sound.play();
     }
 
     function update() {
@@ -90,7 +92,7 @@ window.onload = function() {
         bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, game.input.activePointer, 500, 500, 500 );
         game.physics.arcade.collide(bouncy, banana1, hitSprite, null, this);
         game.physics.arcade.collide(bouncy, banana2, hitSprite, null, this);
-        game.physics.arcade.collide(bouncy, banana3, hitSprite, null, this);
-        game.physics.arcade.collide(bouncy, banana4, hitSprite, null, this);
+        game.physics.arcade.collide(bouncy, banana3, hitSprite2, null, this);
+        game.physics.arcade.collide(bouncy, banana4, hitSprite2, null, this);
     }
 };
