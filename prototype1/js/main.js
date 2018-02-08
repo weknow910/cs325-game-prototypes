@@ -17,6 +17,7 @@ window.onload = function() {
         game.load.image( 'logo', 'assets/Winston.png' );
         game.load.image('banana', 'assets/banana.png');
         game.load.audio('sfx1', 'assets/sound2.ogg');
+        game.load.audio('sfx2', 'assets/sound1.ogg');
     }
 
     var bouncy;
@@ -31,7 +32,7 @@ window.onload = function() {
 
     function create() {
         sound = game.add.audio('sfx1');
-        sound.play();
+        sound2 = game.add.audio('sfx2');
         // Create a sprite at the center of the screen using the 'logo' image.
         bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
         banana1 = game.add.sprite(0, 0, 'banana');
@@ -72,6 +73,11 @@ window.onload = function() {
     function hitSprite(sprite1, sprite2) {
         score -= 1;
         scoreText.text = "Score: " + score;
+        if(counter % 4 == 0)
+          sound2.play()
+        else {
+          sound1.play()
+        }
     }
 
     function update() {
