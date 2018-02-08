@@ -29,6 +29,7 @@ window.onload = function() {
     var score = 0;
     var counter = 0;
     var sound;
+    var sound2;
 
     function create() {
         sound = game.add.audio('sfx1');
@@ -76,7 +77,7 @@ window.onload = function() {
         if(counter % 4 == 0)
           sound2.play()
         else {
-          sound1.play()
+          sound.play()
         }
     }
 
