@@ -15,28 +15,49 @@ window.onload = function() {
     function preload() {
         // Load an image and call it 'logo'.
         game.load.image( 'logo', 'assets/Winston.png' );
+        game.load.image('banana', 'assets/banana.png');
     }
 
     var bouncy;
+    var banana1;
+    var banana2;
+    var scoreText;
+    var score = 0;
 
     function create() {
         // Create a sprite at the center of the screen using the 'logo' image.
         bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
+        banana1 = game.add.sprite(0, 0, 'banana');
+        banana2 = game.add.sprite(750, 0, 'banana');
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
         bouncy.anchor.setTo( 0.5, 0.5 );
 
         // Turn on the arcade physics engine for this sprite.
         game.physics.startSystem(Phaser.Physics.ARCADE);
-
+        game.physics.arcade.enable([banana1, banana2, bouncy]);
         game.stage.backgroundColor = '#2d2d2d';
+        banana1.body.velocity.setTo(200, 200);
+        banana1.body.bounce.set(1);
+
+        banana2.body.velocity.setTo(-200, 200);
+        banana2.body.bounce.set(1);
         // Make it bounce off of the world bounds.
         bouncy.body.collideWorldBounds = true;
+        banana1.body.collideWorldBounds = true;
+        banana2.body.collideWorldBounds = true;
 
+        bouncy.body.onCollide = new Phaser.Signal();
+        bouncy.body.onCollide.add(hitSprite, this);
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
         var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
+        var text = game.add.text( game.world.centerX, 15, "NO I DO NOT WANT A BANANA.", style );
+        scoreText = game.add.text(10,10,scoreString + score, style);
         text.anchor.setTo( 0.5, 0.0 );
+    }
+    function hitSprite(sprite1, sprite2) {
+        score = score - 1;
     }
 
     function update() {
