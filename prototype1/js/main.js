@@ -16,41 +16,58 @@ window.onload = function() {
         // Load an image and call it 'logo'.
         game.load.image( 'logo', 'assets/Winston.png' );
         game.load.image('banana', 'assets/banana.png');
+        game.load.audio('sfx', 'assets/sound1.ogg');
+        game.load.audio('sfx2', 'assets/sound2.ogg');
     }
 
     var bouncy;
     var banana1;
     var banana2;
+    var banana3;
+    var banana4;
     var scoreText;
     var score = 0;
+    var soundclip1;
+    var soundclip2;
+    var counter = 0;
 
     function create() {
         // Create a sprite at the center of the screen using the 'logo' image.
         bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
         banana1 = game.add.sprite(0, 0, 'banana');
-        banana2 = game.add.sprite(750, 0, 'banana');
+        banana2 = game.add.sprite(200, 200, 'banana');
+        banana3 = game.add.sprite(0, 750, 'banana');
+        banana4 = game.add.sprite(500, 500, 'banana');
+        soundclip1 = game.add.audio('sfx2');
+        soundclip2 = game.add.audio('sfx');
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
         bouncy.anchor.setTo( 0.5, 0.5 );
 
         // Turn on the arcade physics engine for this sprite.
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        game.physics.arcade.enable([banana1, banana2, bouncy]);
-        game.stage.backgroundColor = '#2d2d2d';
+        game.physics.arcade.enable([banana1, banana2, banana3, banana4, bouncy]);
+
         banana1.body.velocity.setTo(200, 200);
         banana1.body.bounce.set(1);
-
         banana2.body.velocity.setTo(-200, 200);
         banana2.body.bounce.set(1);
+        banana3.body.velocity.setTo(300, 300);
+        banana3.body.bounce.set(1);
+        banana4.body.velocity.setTo(-300, 300);
+        banana4.body.bounce.set(1);
+
         // Make it bounce off of the world bounds.
         bouncy.body.collideWorldBounds = true;
         banana1.body.collideWorldBounds = true;
         banana2.body.collideWorldBounds = true;
+        banana3.body.collideWorldBounds = true;
+        banana4.body.collideWorldBounds = true;
 
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
-        var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = game.add.text( game.world.centerX, 15, "NO I DO NOT WANT A BANANA.", style );
+        var style = { font: "25px Verdana", fill: "#dce5e5", align: "center" };
+        var text = game.add.text( game.world.centerX, 15, "NO, I DO NOT WANT A BANANA.", style );
         scoreText = game.add.text(10,10,"Score: " + score, style);
         text.anchor.setTo( 0.5, 0.0 );
     }
@@ -68,5 +85,7 @@ window.onload = function() {
         bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, game.input.activePointer, 500, 500, 500 );
         game.physics.arcade.overlap(bouncy, banana1, hitSprite, null, this);
         game.physics.arcade.overlap(bouncy, banana2, hitSprite, null, this);
+        game.physics.arcade.overlap(bouncy, banana3, hitSprite, null, this);
+        game.physics.arcade.overlap(bouncy, banana4, hitSprite, null, this);
     }
 };
