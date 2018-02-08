@@ -14,7 +14,8 @@ window.onload = function() {
 
     function preload() {
         // Load an image and call it 'logo'.
-        game.load.image( 'logo', 'assets/winston.jpg' );
+        game.load.image( 'logo', 'assets/winston.png' );
+        game.load.image( 'logo', 'assets/banana.png');
     }
 
     var bouncy;
