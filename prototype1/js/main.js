@@ -14,7 +14,7 @@ window.onload = function() {
 
     function preload() {
         // Load an image and call it 'logo'.
-        game.load.image( 'logo', 'assets/phaser.png' );
+        game.load.image( 'logo', 'assets/Winston.png' );
         game.load.image('banana', 'assets/banana.png');
     }
 
@@ -44,18 +44,19 @@ window.onload = function() {
         banana2.body.bounce.set(1);
         // Make it bounce off of the world bounds.
         bouncy.body.collideWorldBounds = true;
+        banana1.body.collideWorldBounds = true;
+        banana2.body.collideWorldBounds = true;
 
-        bouncy.body.onCollide = new Phaser.Signal();
-        bouncy.body.onCollide.add(hitSprite, this);
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
         var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
         var text = game.add.text( game.world.centerX, 15, "NO I DO NOT WANT A BANANA.", style );
-        scoreText = game.add.text(10,10,scoreString + score, style);
+        scoreText = game.add.text(10,10,"Score: " + score, style);
         text.anchor.setTo( 0.5, 0.0 );
     }
     function hitSprite(sprite1, sprite2) {
-        score = score - 1;
+        score -= 1;
+        scoreText.text = "Score: " + score;
     }
 
     function update() {
@@ -65,5 +66,7 @@ window.onload = function() {
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
         bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, game.input.activePointer, 500, 500, 500 );
+        game.physics.arcade.overlap(bouncy, banana1, hitSprite, null, this);
+        game.physics.arcade.overlap(bouncy, banana2, hitSprite, null, this);
     }
 };
