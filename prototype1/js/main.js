@@ -88,9 +88,9 @@ window.onload = function() {
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
         bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, game.input.activePointer, 500, 500, 500 );
-        game.physics.arcade.overlap(bouncy, banana1, hitSprite, null, this);
-        game.physics.arcade.overlap(bouncy, banana2, hitSprite, null, this);
-        game.physics.arcade.overlap(bouncy, banana3, hitSprite, null, this);
-        game.physics.arcade.overlap(bouncy, banana4, hitSprite, null, this);
+        game.physics.arcade.collide(bouncy, banana1, hitSprite, null, this);
+        game.physics.arcade.collide(bouncy, banana2, hitSprite, null, this);
+        game.physics.arcade.collide(bouncy, banana3, hitSprite, null, this);
+        game.physics.arcade.collide(bouncy, banana4, hitSprite, null, this);
     }
 };
