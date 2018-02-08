@@ -75,9 +75,9 @@ window.onload = function() {
         score -= 1;
         scoreText.text = "Score: " + score;
         if(counter % 4 == 0)
-          sound2.play()
+          sound2.play();
         else {
-          sound.play()
+          sound.play();
         }
     }
 
