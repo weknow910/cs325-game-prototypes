@@ -27,7 +27,9 @@ window.onload = function() {
         bouncy.anchor.setTo( 0.5, 0.5 );
 
         // Turn on the arcade physics engine for this sprite.
-        game.physics.enable( bouncy, Phaser.Physics.ARCADE );
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+
+        game.stage.backgroundColor = '#2d2d2d';
         // Make it bounce off of the world bounds.
         bouncy.body.collideWorldBounds = true;
 
