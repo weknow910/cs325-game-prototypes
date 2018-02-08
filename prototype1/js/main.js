@@ -44,8 +44,6 @@ window.onload = function() {
         banana2.body.bounce.set(1);
         // Make it bounce off of the world bounds.
         bouncy.body.collideWorldBounds = true;
-        banana1.body.collideWorldBounds = true;
-        banana2.body.collideWorldBounds = true;
 
         bouncy.body.onCollide = new Phaser.Signal();
         bouncy.body.onCollide.add(hitSprite, this);
