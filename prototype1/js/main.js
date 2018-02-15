@@ -92,7 +92,7 @@ window.onload = function() {
         bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, game.input.activePointer, 500, 500, 500 );
         game.physics.arcade.collide(bouncy, banana1, hitSprite, null, this);
         game.physics.arcade.collide(bouncy, banana2, hitSprite, null, this);
-        game.physics.arcade.collide(bouncy, banana3, hitSprite2, null, this);
-        game.physics.arcade.collide(bouncy, banana4, hitSprite2, null, this);
+        game.physics.arcade.collide(bouncy, banana3, hitSprite, null, this);
+        game.physics.arcade.collide(bouncy, banana4, hitSprite, null, this);
     }
 };
