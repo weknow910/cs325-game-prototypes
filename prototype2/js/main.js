@@ -24,8 +24,10 @@ window.onload = function() {
         // Create a sprite at the center of the screen using the 'logo' image.
         game.stage.backgroundColor = "#87CABC";
         player = game.add.sprite( game.world.left, game.world.top, 'player');
-        spikes = game.add.sprite( game.world.left, game.world.bottom, 'spike');
-
+        for(i = 0; i < game.world.right; i+=32)
+        {
+          spikes = game.add.sprite( i, 500, 'spike');
+        }
         player.anchor.setTo( 0.5, 0.5 );
 
         // Turn on the arcade physics engine for this sprite.
