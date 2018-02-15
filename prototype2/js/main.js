@@ -13,7 +13,7 @@ window.onload = function() {
     var game = new Phaser.Game( 1000, 500, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
 
     function preload() {
-        game.load.image( 'player', 'assets/Player.jpg' );
+        game.load.spritesheet( 'player', 'assets/Player.png', 32, 32);
         game.load.image( 'spike', 'assets/Spike.png');
     }
 
@@ -24,7 +24,13 @@ window.onload = function() {
         // Create a sprite at the center of the screen using the 'logo' image.
         game.stage.backgroundColor = "#87CABC";
         player = game.add.sprite( game.world.left, game.world.top, 'player');
-        spikes = game.add.sprite( 0, 500, 'spike');
+        spikes = game.add.sprite( game.world.left, game.world.bottom + 440, 'spike');
+        spikes.addChild(game.make.sprite(game.world.left + 32, game.world.bottom + 440, 'spike');
+        // for(i = 0; i < 100; i += 32)
+        // {
+        //   spikes.addChild(game.make.sprite(game.world.left + i, game.world.bottom + 440, 'spike');
+        // }
+
         player.anchor.setTo( 0.5, 0.5 );
 
         // Turn on the arcade physics engine for this sprite.
