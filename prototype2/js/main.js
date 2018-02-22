@@ -18,20 +18,35 @@ window.onload = function() {
     }
 
     var player;
-    var spikes;
     var i;
+    var spikes;
     function create() {
         // Create a sprite at the center of the screen using the 'logo' image.
         game.stage.backgroundColor = "#87CABC";
-        player = game.add.sprite( game.world.left, game.world.top, 'player');
-        spikes = game.add.sprite( game.world.left, game.world.bottom + 440, 'spike');
-        spikes.addChild(game.make.sprite(game.world.left + 32, game.world.bottom + 440, 'spike');
-        // for(i = 0; i < 100; i += 32)
-        // {
-        //   spikes.addChild(game.make.sprite(game.world.left + i, game.world.bottom + 440, 'spike');
-        // }
+        spikes = game.add.group();
+        spikes.enableBody = true;
+        for(i = 0; i < 1000; i += 32)
+        {
+          var ground = spikes.create(i, game.world.height - 32, 'spike');
+        }
+        ground.body.immovable = true;
 
         player.anchor.setTo( 0.5, 0.5 );
+
+        // The player and its settings
+        player = game.add.sprite(32, game.world.height - 150, 'player');
+
+        //  We need to enable physics on the player
+        game.physics.arcade.enable(player);
+
+        //  Player physics properties. Give the little guy a slight bounce.
+        player.body.bounce.y = 0.2;
+        player.body.gravity.y = 300;
+        player.body.collideWorldBounds = true;
+
+        //  Our two animations, walking left and right.
+        player.animations.add('left', [0, 1, 2, 3], 10, true);
+        player.animations.add('right', [5, 6, 7, 8], 10, true);
 
         // Turn on the arcade physics engine for this sprite.
         game.physics.enable( player, Phaser.Physics.ARCADE );
