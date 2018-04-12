@@ -27,7 +27,7 @@ GameStates.makePreloader = function( game ) {
             //	+ lots of other required assets here
             game.load.image( 'logo', 'assets/phaser.png' );
             game.load.image( 'you', 'assets/boss.png');
-            game.load.image( 'goon', 'assets/goon.jpg');
+            game.load.image( 'goon', 'assets/goon1.jpg');
             game.load.spritesheet( 'dragon', 'assets/dragon.png',390,230,4);
             game.load.image( 'bullet', 'assets/bullet.png');
             game.load.image( 'fireball', 'assets/fireball.png');
