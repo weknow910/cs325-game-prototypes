@@ -5,25 +5,25 @@
      var background = null;
      var you = null;
      var playerRoom = 1;
-     
+
      var securityA;
      var securityAState = 2;
      var securityB;
      var securityBState = 3;
-     
+
      var table1, table2, table3, table4;
      var t1state = -1;
      var t2state = -1;
      var t3state = -1;
-     var t4state = -1;  
+     var t4state = -1;
      var safe;
      var safeSwitch = 1;
      var crackSafe = 0;
-     
+
      var securityTimer;
      var timer;
      var safeTimer;
-     
+
      var style;
      var text;
      var endText
@@ -44,25 +44,23 @@
  	    t1state = -1;
  	    t2state = -1;
  	    t3state = -1;
- 	    t4state = -1; 
+ 	    t4state = -1;
  	    game.paused = false;
  	    game.state.start('Game');
  	}
- 	
+
  	function endGame() {
- 		
+
  		style = { font: "48px Verdana", fill: "#9999ff", align: "center" };
    	 	endText = game.add.text( game.world.centerX-200, 500, "Final Score: " + score, style );
         game.input.onTap.addOnce(restart,this);
    	 	game.paused = true;
  	}
- 	
+
  	function safeProgress() {
  		safeSwitch = 1;
  	}
- 	
- 	function rgbToHex(r, g,  {	return r << 16 | g << 8 | b;}
- 	
+
  	function seatCustomer(){
 // 		var x = Math.floor(Math.random() * 4) + 1;
 // 		if(x == 1 && this.t1State == -1){
@@ -73,7 +71,7 @@
 // 			t1state += 1;
 // 			table1.tint = rgbToHex(255,255-(t1state*50),17)
 // 		}
-// 		
+//
 // 		if(x == 2 && this.t2State == -1){
 // 			t2state += 1;
 // 			table2.tint = rgbToHex(255,255,17);
@@ -82,7 +80,7 @@
 // 			t2state += 1;
 // 			table2.tint = rgbToHex(255,255-(t2state*50),17)
 // 		}
-// 		
+//
 // 		if(x == 3 && this.t3State == -1){
 // 			t3state += 1;
 // 			table3.tint = rgbToHex(255,255,17);
@@ -91,7 +89,7 @@
 // 			t3state += 1;
 // 			table3.tint = rgbToHex(255,255-(t3state*50),17)
 // 		}
-// 		
+//
 // 		if(x == 4 && this.t4State == -1){
 // 			t4state += 1;
 // 			table4.tint = rgbToHex(255,255,17);
@@ -100,7 +98,7 @@
 // 			t4state += 1;
 // 			table4.tint = rgbToHex(255,255-(t4state*50),17)
 // 		}
-// 		
+//
 // 		if(t1state > 5 || t2state > 5 || t3state > 5 || t4state > 5)
 //		{
 // 			endGame();
@@ -130,7 +128,7 @@
  			securityA.x = 700;
  			securityA.y = 310;
  		}
- 		
+
  		if(securityBState == 1)
  		{
  			securityB.x = 200;
@@ -169,30 +167,30 @@
             you = game.add.sprite(100, 50, 'you');
             you.anchor.setTo(0.5, 0.5);
             you.scale.setTo(0.3,0.3);
-            
+
             safe = game.add.sprite(270,150,'safe');
             safe.scale.setTo(0.2,0.2);
-            
+
             table1 = game.add.sprite(100,200, 'table');
             table1.anchor.setTo(0.5, 0.5);
             table1.scale.setTo(0.5,0.5);
-            
+
             table2 = game.add.sprite(100,400, 'table');
             table2.anchor.setTo(0.5, 0.5);
             table2.scale.setTo(0.5,0.5);
-            
+
             table3 = game.add.sprite(500,200, 'table');
             table3.anchor.setTo(0.5, 0.5);
             table3.scale.setTo(0.5,0.5);
-            
+
             table4 = game.add.sprite(500,400, 'table');
             table4.anchor.setTo(0.5, 0.5);
             table4.scale.setTo(0.5,0.5);
-            
+
             securityA = game.add.sprite(700,60,'security');
             securityA.anchor.setTo(0.5,0.5);
             securityA.scale.setTo(0.4,0.4);
-            
+
             securityB = game.add.sprite(200,310,'security');
             securityB.anchor.setTo(0.5,0.5);
             securityB.scale.setTo(0.4,0.4);
@@ -200,13 +198,13 @@
             securityTimer = game.time.create(false);
             securityTimer.loop(5000, moveSecurity, this);
             securityTimer.start();
-            
+
             timer = game.time.create(false);
             timer.loop(60000, endGame ,this);
             timer.start();
-            
+
             style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-           
+
          },
 
          update: function () {
@@ -220,7 +218,7 @@
          	        you.x = 600;
          	        you.y = 50;
          	    }
- 
+
          	    if (game.input.keyboard.isDown(Phaser.Keyboard.THREE))
          	    {231
          	    	you.x = 100;
@@ -247,7 +245,7 @@
      	    	}
          	    if(game.input.keyboard.isDown(Phaser.Keyboard.R) && ((playerRoom == securityAState) || (playerRoom == securityBState)))
          	    	endGame();
-         	    
+
          	    game.time.events.add(4000, seatCustomer, this);
          	    game.debug.text('Time until restaurant closes: ' + timer.duration.toFixed(0)/1000, 0, 500);
          	    game.debug.text('Money: ' + score, 0, 520);
