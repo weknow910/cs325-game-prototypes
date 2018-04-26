@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Phaser Basic Project Template</title>
+	<script src="js/phaser.min.js"></script>
+	<!-- Boot.js must come first since it creates the BasicGame object
+	that stores all the states. -->
+	<script src="js/Boot.js"></script>
+	<script src="js/Preloader.js"></script>
+	<script src="js/Game.js"></script>
+	<script src="js/MainMenu.js"></script>
+	<!-- main.js must come last since it references the other ones. -->
+	<script src="js/main.js"></script>
+
+<style>
+body
+{
+    color: #777;
+    font-family: "Avenir", Verdana, sans-serif;
+}
+#readme
+{
+    margin-top: 10px;
+}
+</style>
+
+</head>
+<body>
+<div id="game"></div>
+<div id="readme">
+<h2>Part-Time Burglar</h2>
+
+<ul>
+<li><strong>Originality:</strong>
+Part-time worker trying to steal from a safe!
+</li>
+
+<li><strong>Technical Merit:</strong>
+What is interesting about your game technology?
+It uses a basic state system for each of the rooms/safe.
+</li>
+
+<li><strong>Prototype Postmortem:</strong>
+What did you learn from this prototype?
+I learned how to use timers and random timed events.
+What was the easiest or hardest part of making it?
+The hardest part was managing tints of each of the tables' states (work in progress!)
+</li>
+
+<li><strong>Prototype Assets:</strong>
+Did you make your prototype assets from scratch? Did you borrow them? TEST
+<ul>
+<li>Loading screen: self-made</li>
+<li>Player: <a href="https://dribbble.com/shots/1060496-Higher-Resolution-Pixel-Man"></a></li>
+<li>Boss: <a href="https://dribbble.com/shots/3371768-Godfather-Sicilian-Mafia-Pixel-Art"></a></li>
+<li>Safe: <a href="https://4vector.com/free-vector/safe-clip-art-114415"></a></li>
+<li>Table: <a href="https://www.ezeeoptimus.com/features.php"></a></li>
+</ul>
+</li>
+
+<li><strong>Prototype Closest Other Game:</strong>
+Which other game most closely resembles your game? If you are borrowing code from a Phaser Example, you must say so here. If you borrow code from elsewhere, you must say so here.
+This is most similar, or will be, most similar to diner dash???
+</li>
+
+<li><strong>High Concept:</strong>
+You are a burglar working as a waiter to get close to and crack open the safe, but you need to do so without alerting your bosses and serving tables!
+</li>
+
+<li><strong>Theme:</strong>
+Modern
+</li>
+
+<li><strong>Mandated Variety:</strong>
+Stealth, Quick-time
+</li>
+
+<li><strong>Prototype Goal:</strong>
+Timed events
+</li>
+
+<li><strong>Player Experience Goals:</strong>
+Tension and anticipation of being caught while gathering a high score
+</li>
+
+<li><strong>Gameplay:</strong>
+Players use 1, 2, 3 and 4 to move through the rooms.  Players can press R to crack open the safe.  Once it is opened,
+press R to gather money.  Do not get caught doing so by your boss!  (serving tables to be added in further iteration)
+</li>
+
+<li><strong>Strategies:</strong>
+What player strategies do you expect will be effective at playing this game?
+Keep track of when the security guards change places
+</li>
+
+<li><strong>Story/Setting/Premise:</strong>
+You are a burglar working as a waiter to get close to and crack open the safe, but you need to do so without alerting your bosses and serving tables!
+</li>
+
+<li><strong>Target Audience:</strong>
+Everyone
+</li>
+
+<li><strong>Play Time:</strong>
+1 minute.
+</li>
+
+<li><strong>Feedback from Physical Prototype:</strong></li>
+<li>The game take the initial premise from the physical prototype, with further mechanics from the physical prototype such has cleaning dishes and serving tables.</li>
+<li>to be added later </li>
+</ul>
+</div>
+</body>
+</html>
