@@ -383,10 +383,6 @@
          	    game.debug.text('Money: ' + score, 0, 520);
          	    game.debug.text('Safe progress: ' + crackSafe + "/100", 0, 540);
          	    game.debug.text('Holding a Plate? ' + holdingPlate, 0, 560);
-         	    game.debug.text('t1 ' + t1state, 500, 500);
-         	    game.debug.text('t2 ' + t2state, 500, 520);
-         	    game.debug.text('t3 ' + t3state, 500, 540);
-         	    game.debug.text('t4 ' + t4state, 500, 560);
 
          }
      };
